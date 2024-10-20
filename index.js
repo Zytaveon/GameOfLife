@@ -1,5 +1,3 @@
-const gridHTML = document.getElementById("grid-container");
-
 /*
     GAME OF LIFE RULES
     -> Alive and has 0 or 1 neighbors, the cell dies
@@ -9,15 +7,17 @@ const gridHTML = document.getElementById("grid-container");
 
 */
 
+const gridHTML = document.getElementById("grid-container");
+const nextButton = document.getElementById("nextButton");
+
 //Will eventually add so user can select how many cols/rows
-const rows = 25;
-const cols = 25;
+const rows = 50;
+const cols = 50;
 
 let currentGrid;
 let newGridHTML = '';
 
 currentGrid = createGrid();
-nextGrid = createGrid();
 fillGridRandom(currentGrid);
 setGridColsRows();
 
@@ -25,14 +25,20 @@ console.log(currentGrid);
 
 createGridHTML();
 
-for(let i = 0; i < 5; ++i){
-    setTimeout(getNextGrid(), i * 5000);
-    currentGrid = nextGrid;
-    createGridHTML();
+for(let i = 0; i < 10; ++i){
+    setTimeout(nextButtonClicked, i * 1000);
 }
 
 
 
+nextButton.addEventListener("click", nextButtonClicked);
+
+function nextButtonClicked(){
+    getNextGrid();
+    currentGrid = nextGrid;
+    createGridHTML();
+    console.log(currentGrid);
+}
 
 function createGrid(){
     const newGrid = new Array(cols);
@@ -52,8 +58,8 @@ function fillGridRandom(grid){
     }
 }
 /*
-    If a square is 1 then it will be considered "alive" or black in the grid
-    If a sqaure is 0 then it will be considered "dead" or white in the grid
+    If a square is 1 then it will be considered "alive" or white in the grid
+    If a sqaure is 0 then it will be considered "dead" or black in the grid
 */
 function createGridHTML(){
     
@@ -84,24 +90,21 @@ function setGridColsRows(){
 function getNextGrid(){
 
     let neighbors;
+    nextGrid = createGrid();
     
     for(let i = 0; i < cols; ++i){
         for(let j = 0; j < rows; ++j){
             neighbors = getNeighbors(i, j);
 
-            if(currentGrid[i][j] === 1){
-                if(neighbors <= 1){
-                    nextGrid[i][j] = 0;
-                }
-                if(neighbors <= 3){
+            if(currentGrid[i][j] ===1){
+                if(neighbors === 2 || neighbors === 3){
                     nextGrid[i][j] = 1;
                 }
                 else{
                     nextGrid[i][j] = 0;
                 }
             }
-
-            if(currentGrid[i][j] === 0 ){
+            else if(currentGrid[i][j] === 0){
                 if(neighbors === 3){
                     nextGrid[i][j] = 1;
                 }
@@ -109,8 +112,13 @@ function getNextGrid(){
                     nextGrid[i][j] = 0;
                 }
             }
-        }
-    } 
+            else{
+                nextGrid[i][j] = 0;
+            }
+            console.log(`Neighbors = ${neighbors} at (${i}, ${j})`);
+        }     
+    }
+    //console.log(nextGrid)
 }
 
 function getNeighbors(i, j){
@@ -137,7 +145,7 @@ function getNeighbors(i, j){
         neighbors += currentGrid[i + 1][j];
     }
 
-    if(j - 1 >0){
+    if(j - 1 >= 0){
         neighbors += currentGrid[i][j - 1];
     }
 

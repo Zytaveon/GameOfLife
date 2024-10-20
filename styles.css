@@ -1,6 +1,11 @@
 *{
     background-color: black;
     border: 2px solid red;
+    box-sizing: border-box;
+}
+
+main{
+    margin-top: 30%;
 }
 
 header{
@@ -12,7 +17,7 @@ header{
 
 #grid-container{
     background-color: black;
-    margin-top: 30%;
+    margin-top: 3%;
     width: 80%;
     margin-right: 10%;
     margin-left: 10%;
@@ -28,9 +33,18 @@ header{
 }
 
 .alive{
-    background-color: black;
+    background-color: white;
 }
 
 .dead{
+    background-color: black;
+}
+
+#nextButton{
     background-color: white;
+}
+
+.nextButtonContainer{
+    align-items: center;
+    width: 100%
 }
