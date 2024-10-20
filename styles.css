@@ -1,0 +1,36 @@
+*{
+    background-color: black;
+    border: 2px solid red;
+}
+
+header{
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+}
+
+#grid-container{
+    background-color: black;
+    margin-top: 30%;
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    height: 60vh;
+    position: absolute;
+    border-radius: 2.5%;
+    border: 3.5px solid white;
+    display: grid;
+}
+
+.gridSquare{
+    color: white;
+}
+
+.alive{
+    background-color: black;
+}
+
+.dead{
+    background-color: white;
+}
