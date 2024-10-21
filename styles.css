@@ -1,18 +1,15 @@
 *{
     background-color: black;
-    border: 2px solid red;
     box-sizing: border-box;
-}
-
-main{
-    margin-top: 30%;
 }
 
 header{
     color: white;
     width: 100%;
     text-align: center;
-    position: fixed;
+    position: relative;
+    top: 10px;
+    left: 20px;
 }
 
 #grid-container{
@@ -26,6 +23,8 @@ header{
     border-radius: 2.5%;
     border: 3.5px solid white;
     display: grid;
+    grid-gap: 1px;;
+    z-index: 0;
 }
 
 .gridSquare{

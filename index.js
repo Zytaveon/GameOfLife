@@ -11,8 +11,8 @@ const gridHTML = document.getElementById("grid-container");
 const nextButton = document.getElementById("nextButton");
 
 //Will eventually add so user can select how many cols/rows
-const rows = 50;
-const cols = 50;
+const rows = 10;
+const cols = 10;
 
 let currentGrid;
 let newGridHTML = '';
